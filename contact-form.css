@@ -1,0 +1,29 @@
+.form-container{
+  background-color: blue;
+  border-radius: 2px;
+  padding: 3px;
+  width: 100%;
+}
+label{
+  margin: auto;
+  color: pink;
+}
+input{
+  width: 100%;
+  padding: 2px;
+  margin-bottom: auto;
+}
+textarea{
+  width: 100%;
+  padding: 2px;
+  margin-bottom: auto;
+}
+button{
+  background-color: pink;
+  font-size: 12px;
+}
+button:hover{
+  background-color: green;
+}
+
+

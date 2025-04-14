@@ -1,0 +1,49 @@
+#house{
+  position: relative;
+  border: 2px red solid;
+  background-color: green;
+  width: 500px;
+  height: 400px;
+}
+#chimney{
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border: 2px blue solid;background-color: red;
+  top: -50%;
+  z-index: -1;
+}
+#roof{
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  border: 2px pink solid;
+  background-color: purple;
+}
+#window-1{
+  position: absolute;
+  width: 10%;
+  height: 20%;
+  border: 2px blue solid;
+  background-color: blue;
+  top: 60%;
+  right: 45%;
+}
+#window-2{
+  position: absolute;
+  width: 20%;
+  height: 10%;
+  border: 2px blue solid;
+  background-color: blue;
+  top: 60%;
+  left: 40%;
+}
+#door{
+  position: absolute;
+  width: 20%;
+  height: 40%;
+  border: 2px brown solid;
+  background-color: brown;
+  bottom: 0;
+  left: 25%;
+}
