@@ -1,35 +1,70 @@
-html{
-  font-size: 24px;
-}
-.newspaper{
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+/* Root font size */
+html {
+    font-size: 24px;
 }
 
-.name{
-  font-family: 'Times New Roman', serif;
-  font-size: 2rem;
-  text-transform: uppercase;
-}
-.author{
-  text-transform: uppercase;
-  font-weight: bold;
-}
-.headline{
-  font-size: 2em;
-  font-weight: bold;
-}
-.sub-headline{
-font-weight: 100;
-font-size: 1.5em;
-font-style: italic;
-}
-.text{
-  text-indent: 20px;
-  line-height: 2em;
-}
-.text::first-letter{
-font-weight: bold;
-font-size: 2em;
+/* Newspaper container */
+.newspaper {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
+/* Newspaper name */
+.name {
+    font-family: 'Times New Roman', serif;
+    font-size: 2rem; /* 2 × root font-size (24px) = 48px */
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+}
+
+/* Date */
+.date {
+    text-align: center;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+/* Headline */
+.headline {
+    font-size: 2em; /* 2 × parent's font-size (16px) = 32px */
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Sub-headline */
+.sub-headline {
+    font-weight: 100;
+    font-size: 1.5em; /* 1.5 × parent's font-size (16px) = 24px */
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Author */
+.author {
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+/* Text paragraphs */
+.text {
+    text-indent: 20px;
+    line-height: 2em; /* 2 × parent's font-size (16px) = 32px */
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+/* First letter styling */
+.text::first-letter {
+    font-weight: bold;
+    font-size: 2em; /* 2 × parent's font-size (16px) = 32px */
+}

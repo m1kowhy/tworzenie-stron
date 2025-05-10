@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Styled To-Do List</title>
-    <link href="todo-list.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Styled Links Lab</title>
+    <link rel="stylesheet" href="todo-list.css">
 </head>
-
 <body>
-<ul class="todo-list">
-    <li>
-        <input type="checkbox" id="first" />
-        <label for="first">label1</label>
-        <ul class="sub-item">
-            <li>
-                <a class="sub-item-link" href="google.com" target="_blank">text1</a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <input type="checkbox" id="second" />
-        <label for="second">label2</label>
-        <ul class="sub-item">
-            <li>
-                <a class="sub-item-link" href="google.com" target="_blank">text2</a>
-            </li>
-        </ul>
-    </li>
-    <li>
-        <input type="checkbox" id="third" />
-        <label for="third">label3</label>
-        <ul class="sub-item">
-            <li>
-                <a class="sub-item-link" href="google.com" target="_blank">text3</a>
-            </li>
-        </ul>
-    </li>
-    
-    <li>
-        <input type="checkbox" id="fourth" />
-        <label for="fourth">label4</label>
-        <ul class="sub-item">
-            <li>
-                <a class="sub-item-link" href="google.com" target="_blank">text4</a>
-            </li>
-        </ul>
-    </li>
-    
-</ul>
+    <ul class="todo-list">
+        <!-- Item 1 -->
+        <li>
+            <input type="checkbox" id="item1">
+            <label for="item1">Task 1</label>
+            <ul class="sub-item">
+                <li><a href="https://example.com" class="sub-item-link" target="_blank">Sub-item 1</a></li>
+            </ul>
+        </li>
+        
+        <!-- Item 2 -->
+        <li>
+            <input type="checkbox" id="item2">
+            <label for="item2">Task 2</label>
+            <ul class="sub-item">
+                <li><a href="https://example.com" class="sub-item-link" target="_blank">Sub-item 2</a></li>
+            </ul>
+        </li>
+        
+        <!-- Item 3 -->
+        <li>
+            <input type="checkbox" id="item3">
+            <label for="item3">Task 3</label>
+            <ul class="sub-item">
+                <li><a href="https://example.com" class="sub-item-link" target="_blank">Sub-item 3</a></li>
+            </ul>
+        </li>
+        
+        <!-- Item 4 -->
+        <li>
+            <input type="checkbox" id="item4">
+            <label for="item4">Task 4</label>
+            <ul class="sub-item">
+                <li><a href="https://example.com" class="sub-item-link" target="_blank">Sub-item 4</a></li>
+            </ul>
+        </li>
+    </ul>
 </body>
-
 </html>

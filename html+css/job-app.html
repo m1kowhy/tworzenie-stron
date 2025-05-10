@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job Application Form</title>
-    <link rel="stylesheet" href="job-app.css"></link>
+    <link rel="stylesheet" href="job-app.css">
 </head>
 <body>
     <div class="container">
         <form>
-            <input type="text" id="name" /> <label for="name">nienawidze</label>
-            <input type="email" id="email" /> <label for="email">frontendu</label>
-            <select id="position">
-                <option></option>
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+            <input type="email" id="email" name="email" placeholder="Email Address" required>
+            
+            <select id="position" name="position" required>
+                <option value="" disabled selected>Select a position</option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="manager">Manager</option>
             </select>
+            
             <fieldset class="radio-group">
-                <input type="radio" name="availability" /> <label for="availability">ha</label>
-                <input type="radio" name="availability" /> <label for="availability">tfu</label>
+                <legend>Availability</legend>
+                <label>
+                    <input type="radio" name="availability" value="full-time" required>
+                    Full-Time
+                </label>
+                <label>
+                    <input type="radio" name="availability" value="part-time">
+                    Part-Time
+                </label>
+                <label>
+                    <input type="radio" name="availability" value="contract">
+                    Contract
+                </label>
             </fieldset>
-            <textarea id="message"></textarea>
-            <button type="submit"></button>
+            
+            <textarea id="message" name="message" placeholder="Your message..." required></textarea>
+            
+            <button type="submit">Submit Application</button>
         </form>
     </div>
 </body>

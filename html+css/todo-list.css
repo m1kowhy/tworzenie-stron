@@ -1,15 +1,48 @@
-a{
-  text-decoration: none;
+/* Base styles */
+.todo-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 20px auto;
 }
-a:hover{
-  color: pink;
+
+.todo-list li {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
-a:active{
-  color: green;
+
+.sub-item {
+    list-style-type: none;
+    padding-left: 20px;
+    margin-top: 5px;
 }
-a:focus{
- outline: solid 2px;
+
+/* Link styles */
+.sub-item-link {
+    text-decoration: none;
+    color: #3498db; /* Default color */
+    transition: color 0.3s ease;
 }
-a:visited{
-  color: red;
+
+/* Visited state */
+.sub-item-link:visited {
+    color: #9b59b6; /* Visited color */
+}
+
+/* Hover state */
+.sub-item-link:hover {
+    color: #e74c3c; /* Hover color */
+}
+
+/* Focus state */
+.sub-item-link:focus {
+    outline: 2px solid #2ecc71; /* Focus outline */
+    outline-offset: 2px;
+}
+
+/* Active (clicked) state */
+.sub-item-link:active {
+    color: #f39c12; /* Active color */
 }

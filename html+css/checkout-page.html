@@ -1,25 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout Page</title>
 </head>
-
 <body>
-<h1>Checkout</h1>
-<section>
-    <h2>Your Cart</h2>
-    <img src="data:image/webp;base64,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" alt="mario" />
-</section>
-<section>
-    <h2>Payment Information</h2>
-    <form>
-        <input id="card-name" name="card-name" aria-required="true" required /><label for="card-name"></label>
-        <input id="card-number" name="card-number" aria-required="true" required /><label for="card-number"></label>
-    </form>
-</section>
-
+    <h1>Checkout</h1>
+    
+    <section>
+        <h2>Your Cart</h2>
+        <img src="https://cdn.freecodecamp.org/curriculum/labs/cube.jpg" alt="Rubik's Cube">
+    </section>
+    
+    <section>
+        <h2>Payment Information</h2>
+        <form>
+            <div>
+                <label for="card-name">Name on Card</label>
+                <input type="text" id="card-name" name="card-name" required aria-required="true">
+            </div>
+            <div>
+                <label for="card-number">Card Number</label>
+                <input type="text" id="card-number" name="card-number" required aria-required="true">
+            </div>
+            <div>
+                <label for="expiry-date">Expiry Date</label>
+                <input type="text" id="expiry-date" name="expiry-date">
+            </div>
+            <div>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv">
+            </div>
+        </form>
+    </section>
 </body>
-
 </html>

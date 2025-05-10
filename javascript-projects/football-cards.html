@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FC Legends - Team Roster</title>
+    <link rel="stylesheet" href="football-cards.css">
+</head>
+<body>
+    <header class="team-header">
+        <h1 id="team">FC Legends</h1>
+        <div class="team-info">
+            <p>Founded: <span id="year">1985</span></p>
+            <p>Head Coach: <span id="head-coach">Alex Ferguson</span></p>
+        </div>
+    </header>
+
+    <main>
+        <div class="filter-container">
+            <label for="position-filter">Filter by Position:</label>
+            <select id="position-filter">
+                <option value="all">All Players</option>
+                <option value="forward">Forwards</option>
+                <option value="midfielder">Midfielders</option>
+                <option value="defender">Defenders</option>
+                <option value="goalkeeper">Goalkeepers</option>
+            </select>
+        </div>
+
+        <div id="player-cards" class="player-grid"></div>
+    </main>
+
+    <script src="football-cards.js"></script>
+</body>
+</html>

@@ -1,29 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Survey Form</title>
-  </head>
-  <body>
-    <h1 id="title">Example title</h1>
-    <p id="description">Example description</p>
+</head>
+<body>
+    <h1 id="title">Customer Satisfaction Survey</h1>
+    <p id="description">Please help us improve our services by completing this short survey.</p>
+    
     <form id="survey-form">
-      <input id="name" type="text" required placeholder="test" />
-      <input id="email" type="email" required placeholder="test@email.com" />
-      <input id="number" type="number" min="3" max="20" placeholder="123-456-789" />
-      <label id="name-label">Name</label>
-      <label id="email-label">Email</label>
-      <label id="number-label">Number</label>
-      <select id="dropdown">
-        <option></option>
-        <option></option>
-      </select>
-      <input type="radio" value="radio" name="radio" />
-      <input type="radio" value="radio" name="radio" />
-      <input type="checkbox" value="check"/>
-      <input type="checkbox" value="check" />
-      <textarea></textarea>
-      <button id="submit" />
+        <!-- Name field -->
+        <label id="name-label" for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+        
+        <!-- Email field -->
+        <label id="email-label" for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+        
+        <!-- Number field -->
+        <label id="number-label" for="number">Age (optional):</label>
+        <input type="number" id="number" name="number" placeholder="Enter your age" min="13" max="120">
+        
+        <!-- Dropdown -->
+        <label for="dropdown">How did you hear about us?</label>
+        <select id="dropdown" name="referral">
+            <option value="">Select an option</option>
+            <option value="friend">Friend or family</option>
+            <option value="advertisement">Advertisement</option>
+            <option value="search">Search engine</option>
+            <option value="other">Other</option>
+        </select>
+        
+        <!-- Radio buttons -->
+        <fieldset>
+            <legend>Would you recommend our service to others?</legend>
+            <label>
+                <input type="radio" name="recommend" value="definitely"> Definitely
+            </label>
+            <label>
+                <input type="radio" name="recommend" value="maybe"> Maybe
+            </label>
+            <label>
+                <input type="radio" name="recommend" value="not-sure"> Not sure
+            </label>
+        </fieldset>
+        
+        <!-- Checkboxes -->
+        <fieldset>
+            <legend>What would you like to see improved? (Check all that apply)</legend>
+            <label>
+                <input type="checkbox" name="improvements" value="products"> Product quality
+            </label>
+            <label>
+                <input type="checkbox" name="improvements" value="prices"> Prices
+            </label>
+            <label>
+                <input type="checkbox" name="improvements" value="support"> Customer support
+            </label>
+            <label>
+                <input type="checkbox" name="improvements" value="delivery"> Delivery speed
+            </label>
+        </fieldset>
+        
+        <!-- Textarea -->
+        <label for="comments">Additional comments:</label>
+        <textarea id="comments" name="comments" placeholder="Enter your comments here..."></textarea>
+        
+        <!-- Submit button -->
+        <button type="submit" id="submit">Submit Survey</button>
     </form>
-  </body>
+</body>
 </html>

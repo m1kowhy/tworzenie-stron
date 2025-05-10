@@ -1,51 +1,72 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Documentation</title>
     <link rel="stylesheet" href="tech-doc.css">
-  </head>
-  <main id = "main-doc">
+</head>
+<body>
     <nav id="navbar">
-      <header>Tekst</header>
-      <a class="nav-link" href="#first">first</a>
-      <a class="nav-link" href="#second">second</a>
-      <a class="nav-link" href="#third">third</a>
-      <a class="nav-link" href="#fourth">fourth</a>
-      <a class="nav-link" href="#fifth">fifth</a>
+        <header>JavaScript Documentation</header>
+        <a class="nav-link" href="#Introduction">Introduction</a>
+        <a class="nav-link" href="#Variables">Variables</a>
+        <a class="nav-link" href="#Data_Types">Data Types</a>
+        <a class="nav-link" href="#Functions">Functions</a>
+        <a class="nav-link" href="#Objects">Objects</a>
     </nav>
-    <section class="main-section" id="first">
-      <header>first</header>
-      <p></p>
-      <p></p>
-      <code></code>
-      <li></li>
-    </section>
-    <section class="main-section" id="second">
-      <header>second</header>
-      <p></p>
-      <p></p>
-      <code></code>
-      <li></li>
-    </section>
-    <section class="main-section" id="third">
-      <header>third</header>
-      <p></p>
-      <p></p>
-      <code></code>
-      <li></li>
-    </section>
-    <section class="main-section" id="fourth">
-      <header>fourth</header>
-      <p></p>
-      <p></p>
-      <code></code>
-      <li></li>
-    </section>
-    <section class="main-section" id="fifth">
-      <header>fifth</header>
-      <p></p>
-      <p></p>
-      <code></code>
-      <li></li>
-    </section>
+
+    <main id="main-doc">
+        <section class="main-section" id="Introduction">
+            <header>Introduction</header>
+            <p>JavaScript is a cross-platform, object-oriented scripting language.</p>
+            <p>It is a small and lightweight language.</p>
+            <code>console.log('Hello World');</code>
+            <p>JavaScript contains a standard library of objects.</p>
+            <li>Client-side JavaScript</li>
+        </section>
+
+        <section class="main-section" id="Variables">
+            <header>Variables</header>
+            <p>You use variables as symbolic names for values in your application.</p>
+            <code>let x = 5;</code>
+            <p>JavaScript has three kinds of variable declarations.</p>
+            <li>var</li>
+            <li>let</li>
+            <li>const</li>
+        </section>
+
+        <section class="main-section" id="Data_Types">
+            <header>Data Types</header>
+            <p>The latest ECMAScript standard defines seven data types:</p>
+            <code>let num = 42; // Number</code>
+            <p>Six data types that are primitives:</p>
+            <li>Boolean</li>
+            <li>Null</li>
+            <li>Undefined</li>
+            <li>Number</li>
+            <li>String</li>
+            <li>Symbol</li>
+        </section>
+
+        <section class="main-section" id="Functions">
+            <header>Functions</header>
+            <p>A function definition consists of the function keyword.</p>
+            <code>function square(number) { return number * number; }</code>
+            <p>Functions can be defined in several ways.</p>
+            <li>Function declarations</li>
+            <li>Function expressions</li>
+        </section>
+
+        <section class="main-section" id="Objects">
+            <header>Objects</header>
+            <p>Objects in JavaScript can be thought of as collections of key-value pairs.</p>
+            <code>let car = { make: 'Toyota', model: 'Camry' };</code>
+            <p>Objects can be created in several ways.</p>
+            <li>Object literal syntax</li>
+            <li>Constructor function</li>
+            <code>class Car { constructor(make, model) { this.make = make; this.model = model; } }</code>
+        </section>
     </main>
-  </html>
+</body>
+</html>

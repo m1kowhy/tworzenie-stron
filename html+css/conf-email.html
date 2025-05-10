@@ -1,33 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Confidential Email</title>
-  <link rel="stylesheet" href="conf-email.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Document</title>
+    <style>
+        #email {
+            padding: 50px;
+            margin-top: 50px;
+            width: 400px; /* 500px total width - 50px padding on each side (100px) - 2px border on each side (4px) */
+            border: 2px solid black;
+            box-sizing: border-box;
+        }
+        
+        #confidential, #top-secret {
+            display: inline-block;
+            padding: 10px;
+            margin-left: 20px;
+            border: 1px solid red;
+            transform: rotate(-15deg);
+        }
+        
+        .blurred {
+            filter: blur(3px);
+        }
+    </style>
 </head>
-
 <body>
-<main id="email">
-  <p>
-    <span class="blurred">1</span>
-  <span class="blurred">2</span>
-  <span class="blurred">3</span>
-  </p>
-  <p>
-    <span class="blurred">1</span>
-  <span class="blurred">2</span>
-  <span class="blurred">2</span>
-  </p>
-  <p>
-    <span class="blurred">1</span>
-  <span class="blurred">2</span>
-  <span class="blurred">3</span>
-  </p>
-  <div id="confidential"></div>
-<div id="top-secret"></div>
-</main>
+    <main id="email">
+        <div id="confidential">CONFIDENTIAL</div>
+        <div id="top-secret">TOP SECRET</div>
+        
+        <p>
+            This document contains <span class="blurred">sensitive information</span> regarding 
+            <span class="blurred">classified operations</span> and should not be shared 
+            with <span class="blurred">unauthorized personnel</span>.
+        </p>
+        
+        <p>
+            The <span class="blurred">security clearance</span> level required for this 
+            document is <span class="blurred">Level 5</span> or above. Any 
+            <span class="blurred">breach of protocol</span> will result in immediate action.
+        </p>
+        
+        <p>
+            All <span class="blurred">recipients</span> must confirm receipt of this 
+            message and <span class="blurred">destroy all copies</span> after 
+            <span class="blurred">72 hours</span>.
+        </p>
+    </main>
 </body>
-
 </html>
