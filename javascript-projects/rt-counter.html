@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+  <style>
+    #char-count {
+      font-size: 16px;
+    }
+    #char-count.red {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <textarea id="text-input"></textarea>
+  <p id="char-count">Character Count: 0/50</p>
+
+  <script>
+    const textInput = document.getElementById('text-input');
+    const charCount = document.getElementById('char-count');
+
+    textInput.addEventListener('input', function() {
+      const currentLength = textInput.value.length;
+      charCount.textContent = `Character Count: ${currentLength}/50`;
+
+      if (currentLength >= 50) {
+        charCount.classList.add('red');
+        textInput.disabled = true;
+      } else {
+        charCount.classList.remove('red');
+        textInput.disabled = false; 
+      }
+    });
+  </script>
+
+</body>
+</html>
+

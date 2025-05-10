@@ -1,0 +1,37 @@
+<ul class="item-list">
+  <li>
+    Item 1
+    <button class="favorite-icon">&#9825;</button>
+  </li>
+  <li>
+    Item 2
+    <button class="favorite-icon">&#9825;</button>
+  </li>
+  <li>
+    Item 3
+    <button class="favorite-icon">&#9825;</button>
+  </li>
+</ul>
+
+<style>
+  .filled {
+    color: red;
+  }
+</style>
+
+<script>
+  const favoriteIcons = document.querySelectorAll('.favorite-icon');
+
+  favoriteIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      if (icon.classList.contains('filled')) {
+        icon.classList.remove('filled');
+        icon.innerHTML = '&#9825;';
+      } else {
+        icon.classList.add('filled');
+        icon.innerHTML = '&#10084;';
+      }
+    });
+  });
+</script>
+

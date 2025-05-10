@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lightbox Gallery</title>
+  <style>
+    .gallery {
+      display: flex;
+      gap: 10px;
+      margin: 20px;
+    }
+    .gallery-item {
+      width: 150px;
+      cursor: pointer;
+    }
+    .lightbox {
+      display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+    }
+    #lightbox-image {
+      max-width: 90%;
+      max-height: 80%;
+    }
+    #close-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gallery">
+    <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/stonehenge-thumbnail.jpg" alt="Stonehenge">
+    <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/storm-thumbnail.jpg" alt="Storm">
+    <img class="gallery-item" src="https://cdn.freecodecamp.org/curriculum/labs/trees-thumbnail.jpg" alt="Trees">
+  </div>
+
+  <div class="lightbox">
+    <img id="lightbox-image" src="" alt="Full Size">
+    <button id="close-btn">Close</button>
+  </div>
+
+  <script>
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightbox = document.querySelector('.lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const closeBtn = document.getElementById('close-btn');
+
+    galleryItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        const fullSizeSrc = e.target.src.replace('-thumbnail', '');
+        lightboxImage.src = fullSizeSrc;
+        lightbox.style.display = 'flex';
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
+

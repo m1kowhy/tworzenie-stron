@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drum Machine</title>
+  <style>
+    #drum-machine {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    #pad-bank {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 10px;
+    }
+    .drum-pad {
+      width: 100px;
+      height: 100px;
+      background-color: #8c8c8c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: white;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    #display {
+      margin-top: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div id="drum-machine">
+    <div id="pad-bank">
+      <div class="drum-pad" id="Q">
+        <audio class="clip" id="Q" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-1.mp3"></audio>Q
+      </div>
+      <div class="drum-pad" id="W">
+        <audio class="clip" id="W" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-2.mp3"></audio>W
+      </div>
+      <div class="drum-pad" id="E">
+        <audio class="clip" id="E" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-3.mp3"></audio>E
+      </div>
+      <div class="drum-pad" id="A">
+        <audio class="clip" id="A" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-4_1.mp3"></audio>A
+      </div>
+      <div class="drum-pad" id="S">
+        <audio class="clip" id="S" src="https://cdn.freecodecamp.org/curriculum/drum/Heater-6.mp3"></audio>S
+      </div>
+      <div class="drum-pad" id="D">
+        <audio class="clip" id="D" src="https://cdn.freecodecamp.org/curriculum/drum/Dsc_Oh.mp3"></audio>D
+      </div>
+      <div class="drum-pad" id="Z">
+        <audio class="clip" id="Z" src="https://cdn.freecodecamp.org/curriculum/drum/Kick_n_Hat.mp3"></audio>Z
+      </div>
+      <div class="drum-pad" id="X">
+        <audio class="clip" id="X" src="https://cdn.freecodecamp.org/curriculum/drum/RP4_KICK_1.mp3"></audio>X
+      </div>
+      <div class="drum-pad" id="C">
+        <audio class="clip" id="C" src="https://cdn.freecodecamp.org/curriculum/drum/Cev_H2.mp3"></audio>C
+      </div>
+    </div>
+    <p id="display"></p>
+  </div>
+
+  <script>
+    const pads = document.querySelectorAll('.drum-pad');
+    const display = document.getElementById('display');
+
+    const sounds = {
+      Q: "Heater 1",
+      W: "Heater 2",
+      E: "Heater 3",
+      A: "Heater 4",
+      S: "Clap",
+      D: "Open-HH",
+      Z: "Kick-n'-Hat",
+      X: "Kick",
+      C: "Closed-HH"
+    };
+
+    // Play sound and display the corresponding sound name when a drum pad is clicked
+    pads.forEach(pad => {
+      pad.addEventListener('click', () => {
+        const audio = pad.querySelector('.clip');
+        audio.play();
+        display.innerText = sounds[pad.id];
+      });
+    });
+
+    // Play sound and display the corresponding sound name when a key is pressed
+    document.addEventListener('keydown', (event) => {
+      const key = event.key.toUpperCase();
+      if (sounds[key]) {
+        const pad = document.getElementById(key);
+        const audio = pad.querySelector('.clip');
+        audio.play();
+        display.innerText = sounds[key];
+      }
+    });
+  </script>
+</body>
+</html>
+
