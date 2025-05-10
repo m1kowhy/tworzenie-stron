@@ -1,0 +1,16 @@
+let adjective = "adorable";
+let noun = "elephant";
+let verb = "skating";
+let place = "house";
+let adjective2 = "sad";
+let noun2 = "computer";
+let firstStory = "Once upon a time, there was a(n) " + adjective + " " + noun + " who loved to eat " + noun2 + ". The " + noun + " lived in a " + place + " and had " + adjective2 + " nostrils that blew fire when it was " + verb + ".";
+console.log("First story: " + firstStory);
+adjective = "beautiful";
+noun = "tiger";
+verb = "dancing";
+place = "garage";
+adjective2 = "huge";
+noun2 = "baseball";
+let secondStory = "Once upon a time, there was a(n) " + adjective + " " + noun + " who loved to eat " + noun2 + ". The " + noun + " lived in a " + place + " and had " + adjective2 + " nostrils that blew fire when it was " + verb + ".";
+console.log("Second story: " + secondStory);
