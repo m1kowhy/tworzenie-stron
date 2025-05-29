@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Festiwal Muzyczny 2025</title>
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <h1 class="logo">Festiwal Muzyczny</h1>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav class="nav-mobile">
+        <ul>
+          <li><a href="index.html" class="active">Strona Główna</a></li>
+          <li><a href="lineup.html">Line-up</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content container">
+      <h1>Festiwal Muzyczny 2025</h1>
+      <p>Najlepsza muzyka, niezapomniane emocje i wyjątkowa atmosfera. Dołącz do nas!</p>
+      <a href="lineup.html" class="button-link">Zobacz line-up</a>
+    </div>
+  </section>
+
+  <main class="container">
+    <section
+      class="grid-photos"
+      aria-label="Galeria artystów festiwalu muzycznego"
+    >
+      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Artysta 1 - DJ Wave" />
+      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Artysta 2 - The Rockers" />
+      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Artysta 3 - Jazz Band" />
+      <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Artysta 4 - Pop Queens" />
+        <!--<img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Artysta 5 - Metal Heads" />-->
+    </section>
+
+    <section
+      id="newsletter"
+      class="newsletter"
+      aria-label="Formularz zapisu do newslettera"
+    >
+      <h3>Zapisz się na newsletter</h3>
+      <form>
+        <label for="email">Twój email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="email@example.com"
+          required
+        />
+        <button type="submit">Zapisz się</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="footer-links">
+        <a href="index.html">Strona Główna</a>
+        <a href="lineup.html">Line-up</a>
+        <a href="#newsletter">Newsletter</a>
+      </div>
+      <div
+        class="social-icons"
+        aria-label="Media społecznościowe: Facebook, Instagram, Twitter"
+      >
+        <a href="#" aria-label="Facebook"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="#" aria-label="Instagram"
+          ><i class="fab fa-instagram"></i
+        ></a>
+        <a href="#" aria-label="Twitter"
+          ><i class="fab fa-twitter"></i
+        ></a>
+      </div>
+      <p>&copy; 2025 Festiwal Muzyczny</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navMobile = document.querySelector(".nav-mobile");
+
+    menuToggle.addEventListener("click", () => {
+      navMobile.classList.toggle("active");
+      menuToggle.querySelector("i").classList.toggle("fa-bars");
+      menuToggle.querySelector("i").classList.toggle("fa-times");
+    });
+  </script>
+</body>
+</html>
+
+
