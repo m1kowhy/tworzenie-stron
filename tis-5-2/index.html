@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lista To-Do - Stylizacja Premium</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 20px;
+      color: #fff;
+    }
+
+    .container {
+      background: #1e1e2f;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      width: 100%;
+      max-width: 480px;
+      padding: 30px 40px;
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 600;
+      font-size: 2.4rem;
+      margin-bottom: 30px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #f5f5f7;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.6);
+    }
+
+    form {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 14px 18px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      border: none;
+      outline: none;
+      background: #2e2e47;
+      color: #eee;
+      box-shadow: inset 3px 3px 8px #1c1c30,
+                  inset -3px -3px 8px #40405e;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      font-weight: 500;
+    }
+
+    input[type="text"]:focus {
+      background: #3b3b62;
+      box-shadow: inset 4px 4px 10px #292942,
+                  inset -4px -4px 10px #4e4e77;
+    }
+
+    button {
+      background: #8e44ad;
+      border: none;
+      border-radius: 50px;
+      padding: 0 24px;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(142, 68, 173, 0.6);
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button:hover {
+      background: #a155cc;
+      box-shadow: 0 8px 20px rgba(161, 85, 204, 0.8);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    ul::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ul::-webkit-scrollbar-thumb {
+      background-color: #6a5aa3;
+      border-radius: 20px;
+    }
+
+    li {
+      background: #2c2c4a;
+      margin-bottom: 15px;
+      padding: 14px 20px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 4px 4px 8px rgba(0,0,0,0.3),
+                  -4px -4px 8px rgba(70,70,110,0.4);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: default;
+      user-select: none;
+    }
+
+    li:hover {
+      transform: translateY(-4px);
+      box-shadow: 6px 6px 12px rgba(0,0,0,0.5),
+                  -6px -6px 12px rgba(90,90,140,0.6);
+    }
+
+    li.done {
+      background: #3a874a;
+      box-shadow: 4px 4px 10px rgba(58,135,74,0.6),
+                  -4px -4px 10px rgba(80,160,90,0.6);
+      color: #d0f0c0;
+    }
+
+    li.done span {
+      text-decoration: line-through;
+      font-style: italic;
+      opacity: 0.8;
+    }
+
+    li span {
+      flex: 1;
+      font-size: 1.15rem;
+      font-weight: 500;
+      padding-right: 10px;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    li span:hover {
+      color: #c2d94c;
+    }
+
+    button.delete {
+      background: #e74c3c;
+      box-shadow: 0 4px 8px rgba(231, 76, 60, 0.6);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button.delete:hover {
+      background: #c0392b;
+      box-shadow: 0 6px 14px rgba(192, 57, 43, 0.8);
+    }
+
+    /* Animacja dodawania elementu */
+    @keyframes fadeInScale {
+      0% {
+        opacity: 0;
+        transform: scale(0.7);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    li.new-item {
+      animation: fadeInScale 0.35s ease forwards;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Lista To-Do</h1>
+
+    <form id="todo-form">
+      <input type="text" id="todo-input" placeholder="Dodaj nowe zadanie..." autocomplete="off" required />
+      <button type="submit" aria-label="Dodaj zadanie">Dodaj</button>
+    </form>
+
+    <ul id="todo-list"></ul>
+  </div>
+
+  <script>
+    const form = document.getElementById('todo-form');
+    const input = document.getElementById('todo-input');
+    const list = document.getElementById('todo-list');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const taskText = input.value.trim();
+      if (!taskText) return;
+
+      const li = document.createElement('li');
+      li.classList.add('new-item');
+
+      const span = document.createElement('span');
+      span.textContent = taskText;
+      span.title = 'Kliknij, aby oznaczyć jako wykonane';
+      span.addEventListener('click', () => {
+        li.classList.toggle('done');
+      });
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Usuń';
+      deleteBtn.className = 'delete';
+      deleteBtn.title = 'Usuń zadanie';
+      deleteBtn.addEventListener('click', () => {
+        li.remove();
+      });
+
+      li.appendChild(span);
+      li.appendChild(deleteBtn);
+      list.appendChild(li);
+
+      input.value = '';
+      input.focus();
+
+      // Usuń klasę animacji po zakończeniu, by nie przeszkadzała
+      li.addEventListener('animationend', () => {
+        li.classList.remove('new-item');
+      });
+    });
+  </script>
+
+</body>
+</html>
+
