@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Leaflet Map</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        #map {
+            height: 500px;
+            width: 100%;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .map-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .popup-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .popup-button:hover {
+            background-color: #45a049;
+        }
+        
+        .form-container {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        input[type="text"], input[type="color"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .polygon-hover {
+            fillColor: #ff7800;
+            fillOpacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Interactive Leaflet Map</h1>
+    
+    <div class="map-container">
+        <div id="map"></div>
+        
+        <div class="form-container">
+            <h2>Add New Marker</h2>
+            <div class="form-group">
+                <label for="latitude">Latitude:</label>
+                <input type="text" id="latitude" placeholder="e.g., 51.505">
+                <div id="latitude-error" class="error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="longitude">Longitude:</label>
+                <input type="text" id="longitude" placeholder="e.g., -0.09">
+                <div id="longitude-error" class="error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="popup-text">Popup Text:</label>
+                <input type="text" id="popup-text" placeholder="Marker description">
+                <div id="popup-text-error" class="error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="button-text">Button Text:</label>
+                <input type="text" id="button-text" placeholder="Click me">
+                <div id="button-text-error" class="error"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="button-color">Button Color:</label>
+                <input type="color" id="button-color" value="#4CAF50">
+            </div>
+            
+            <div class="form-group">
+                <label for="marker-color">Marker Color:</label>
+                <input type="color" id="marker-color" value="#3388ff">
+            </div>
+            
+            <button id="add-marker">Add Marker</button>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Initialize the map
+        const map = L.map('map').setView([51.505, -0.09], 13);
+        
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Define a polygon area
+        const polygon = L.polygon([
+            [51.509, -0.08],
+            [51.503, -0.06],
+            [51.51, -0.047]
+        ], {
+            color: '#3388ff',
+            fillColor: '#3388ff',
+            fillOpacity: 0.5,
+            weight: 2
+        }).addTo(map);
+        
+        // Add hover style for polygon
+        polygon.on('mouseover', function() {
+            this.setStyle({
+                fillColor: '#ff7800',
+                fillOpacity: 0.7
+            });
+        });
+        
+        polygon.on('mouseout', function() {
+            this.setStyle({
+                fillColor: '#3388ff',
+                fillOpacity: 0.5
+            });
+        });
+        
+        // Function to copy coordinates to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(function() {
+                alert('Coordinates copied to clipboard: ' + text);
+            }, function(err) {
+                console.error('Could not copy text: ', err);
+            });
+        }
+        
+        // Add click event to map to copy coordinates
+        map.on('click', function(e) {
+            const coords = e.latlng.lat.toFixed(6) + ', ' + e.latlng.lng.toFixed(6);
+            copyToClipboard(coords);
+        });
+        
+        // Function to create a marker with popup
+        function createMarker(lat, lng, popupText, buttonText, buttonColor, markerColor) {
+            // Create a custom icon (optional)
+            const customIcon = L.divIcon({
+                className: 'custom-icon',
+                html: `<svg viewBox="0 0 32 32" width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+                          <path fill="${markerColor}" d="M16 0c-5.523 0-10 4.477-10 10 0 10 10 22 10 22s10-12 10-22c0-5.523-4.477-10-10-10z"/>
+                          <circle fill="#ffffff" cx="16" cy="10" r="5"/>
+                        </svg>`,
+                iconSize: [32, 32],
+                iconAnchor: [16, 32],
+                popupAnchor: [0, -32]
+            });
+            
+            // Create marker
+            const marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
+            
+            // Create popup content with button
+            const popupContent = `
+                <div>
+                    <p>${popupText}</p>
+                    <button class="popup-button" 
+                            style="background-color: ${buttonColor}"
+                            onclick="alert('Button clicked!')">
+                        ${buttonText}
+                    </button>
+                    <p>Coordinates: ${lat.toFixed(6)}, ${lng.toFixed(6)}</p>
+                </div>
+            `;
+            
+            // Bind popup to marker and keep it open
+            marker.bindPopup(popupContent, {
+                autoClose: false,
+                closeOnClick: false,
+                closeButton: false
+            }).openPopup();
+            
+            return marker;
+        }
+        
+        // Add 3 initial markers
+        createMarker(51.505, -0.09, 'First Marker', 'Click Me', '#4CAF50', '#3388ff');
+        createMarker(51.51, -0.1, 'Second Marker', 'Press Me', '#2196F3', '#ff0000');
+        createMarker(51.5, -0.08, 'Third Marker', 'Try Me', '#9C27B0', '#00ff00');
+        
+        // Form validation and marker addition
+        document.getElementById('add-marker').addEventListener('click', function() {
+            // Get form values
+            const latInput = document.getElementById('latitude');
+            const lngInput = document.getElementById('longitude');
+            const popupTextInput = document.getElementById('popup-text');
+            const buttonTextInput = document.getElementById('button-text');
+            const buttonColor = document.getElementById('button-color').value;
+            const markerColor = document.getElementById('marker-color').value;
+            
+            // Reset errors
+            document.querySelectorAll('.error').forEach(el => el.textContent = '');
+            
+            // Validate inputs
+            let isValid = true;
+            
+            const lat = parseFloat(latInput.value);
+            if (isNaN(lat) || lat < -90 || lat > 90) {
+                document.getElementById('latitude-error').textContent = 'Please enter a valid latitude (-90 to 90)';
+                isValid = false;
+            }
+            
+            const lng = parseFloat(lngInput.value);
+            if (isNaN(lng) || lng < -180 || lng > 180) {
+                document.getElementById('longitude-error').textContent = 'Please enter a valid longitude (-180 to 180)';
+                isValid = false;
+            }
+            
+            const popupText = popupTextInput.value.trim();
+            if (popupText === '') {
+                document.getElementById('popup-text-error').textContent = 'Please enter popup text';
+                isValid = false;
+            }
+            
+            const buttonText = buttonTextInput.value.trim();
+            if (buttonText === '') {
+                document.getElementById('button-text-error').textContent = 'Please enter button text';
+                isValid = false;
+            }
+            
+            // If valid, add marker
+            if (isValid) {
+                createMarker(lat, lng, popupText, buttonText, buttonColor, markerColor);
+                
+                // Center map on new marker
+                map.setView([lat, lng], 13);
+                
+                // Clear form (optional)
+                // latInput.value = '';
+                // lngInput.value = '';
+                // popupTextInput.value = '';
+                // buttonTextInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>
