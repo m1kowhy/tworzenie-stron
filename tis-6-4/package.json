@@ -1,0 +1,20 @@
+{
+  "name": "tis-6-4",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^3.0.0",
+    "koa-body": "^6.0.1",
+    "koa-router": "^13.0.1",
+    "koa-static": "^5.0.0"
+  }
+}

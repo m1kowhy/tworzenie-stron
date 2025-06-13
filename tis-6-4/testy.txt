@@ -1,0 +1,22 @@
+# GET
+curl -X GET "http://localhost:8080/hello?name=Jan"
+
+# POST
+curl -X POST http://localhost:8080/hello -H "Content-Type: application/json"
+
+# PUT
+curl -X PUT http://localhost:8080/hello -H "Content-Type: application/json"
+
+# DELETE
+curl -X DELETE http://localhost:8080/hello
+
+# PATCH
+curl -X PATCH http://localhost:8080/hello
+
+# Formularz z parametrem
+curl -X GET "http://localhost:8080/form?login=testuser"
+
+# Wysyłanie danych formularza (POST)
+curl -X POST "http://localhost:8080/submit" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "username=admin&password=secret"
