@@ -1,0 +1,22 @@
+{
+  "name": "tis-6-6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "chart.js": "^4.4.9",
+    "csv-parser": "^3.2.0",
+    "koa": "^3.0.0",
+    "koa-router": "^13.0.1",
+    "koa-static": "^5.0.0"
+  }
+}

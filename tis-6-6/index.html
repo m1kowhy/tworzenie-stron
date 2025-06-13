@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wizualizacja dróg rowerowych</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .chart-container { width: 80%; margin: 20px auto; }
+    select { padding: 8px; margin: 10px; }
+    .controls { text-align: center; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <h1 style="text-align: center;">Długość dróg rowerowych w Polsce (2011-2022)</h1>
+  
+  <div class="controls">
+    <label for="year">Wybierz rok:</label>
+    <select id="year" onchange="updateCharts()"></select>
+    
+    <label for="voivodeship">Wybierz województwo:</label>
+    <select id="voivodeship" onchange="updateLineChart()"></select>
+  </div>
+
+  <div class="chart-container">
+    <h2>Długość dróg rowerowych wg województw</h2>
+    <canvas id="barChart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h2>Procentowy udział województw</h2>
+    <canvas id="pieChart"></canvas>
+  </div>
+
+  <div class="chart-container">
+    <h2>Zmiany w czasie dla wybranego województwa</h2>
+    <canvas id="lineChart"></canvas>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
